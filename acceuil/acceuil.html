@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="acceuil.css">
+    <script type="text/javascript" src="acceuil.js" defer></script>
+</head>
+
+<body>
+    <aside>
+        <!-- NextGen  -->
+        <div class="NextGen">
+            <img src="../pics/logo.png" width="70px">
+            <h1>NextGen</h1>
+        </div>
+
+        <!-- icons  -->
+        <ul  class="icons">
+            <li class="line active" onclick="showSection('sec1')">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M367-527q-47-47-47-113t47-113q47-47 113-47t113 47q47 47 47 113t-47 113q-47 47-113 47t-113-47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm296.5-343.5Q560-607 560-640t-23.5-56.5Q513-720 480-720t-56.5 23.5Q400-673 400-640t23.5 56.5Q447-560 480-560t56.5-23.5ZM480-640Zm0 400Z"/></svg>                  
+                <p>Clients</p>
+            </li>
+            <li class="line" onclick="showSection('sec2')">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>                
+                <p>Add Client</p>
+            </li>
+            <li class="line" onclick="showSection('sec3')">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M160-360q-50 0-85-35t-35-85q0-50 35-85t85-35v-80q0-33 23.5-56.5T240-760h120q0-50 35-85t85-35q50 0 85 35t35 85h120q33 0 56.5 23.5T800-680v80q50 0 85 35t35 85q0 50-35 85t-85 35v160q0 33-23.5 56.5T720-120H240q-33 0-56.5-23.5T160-200v-160Zm242.5-97.5Q420-475 420-500t-17.5-42.5Q385-560 360-560t-42.5 17.5Q300-525 300-500t17.5 42.5Q335-440 360-440t42.5-17.5Zm240 0Q660-475 660-500t-17.5-42.5Q625-560 600-560t-42.5 17.5Q540-525 540-500t17.5 42.5Q575-440 600-440t42.5-17.5ZM320-280h320v-80H320v80Zm-80 80h480v-480H240v480Zm240-240Z"/></svg>
+                <p>Chatbot</p>
+            </li>
+            
+        </ul>
+    </aside>
+
+    <!--nav bar-->
+    <nav>
+        <div class="section">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M367-527q-47-47-47-113t47-113q47-47 113-47t113 47q47 47 47 113t-47 113q-47 47-113 47t-113-47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm296.5-343.5Q560-607 560-640t-23.5-56.5Q513-720 480-720t-56.5 23.5Q400-673 400-640t23.5 56.5Q447-560 480-560t56.5-23.5ZM480-640Zm0 400Z"/></svg>
+            <h2>Client</h2>
+        </div>
+       <!-- dark/light mode button  -->
+        <button id="theme-switch">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M338.5-338.5Q280-397 280-480t58.5-141.5Q397-680 480-680t141.5 58.5Q680-563 680-480t-58.5 141.5Q563-280 480-280t-141.5-58.5ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/></svg>
+        </button>
+    </nav>
+
+    <!--Content-->
+    <div class="client"  >
+        <div class="visibility content" id="sec1">
+            <div class="search-box">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+                <input type="text" placeholder="Search Client">
+            </div>
+            <div class="table-container">
+            <table border="1" cellpadding="10" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Client</th>
+                        <th>Address</th>
+                        <th>Phone Number</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="clientTable">
+                    <tr>
+                        <td>1</td>
+                        <td>Ahmed Ben Ali</td>
+                        <td>ahmed@gmail.com</td>
+                        <td>21 345 678</td>
+                        <td>
+                            <div class="actions">
+                                <button class="delete-btn">Delete</button>
+                                <button class="edit-btn">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Sara Trabelsi</td>
+                        <td>sara@gmail.com</td>
+                        <td>55 123 456</td>
+                        <td>
+                            <div class="actions">
+                                <button class="delete-btn">Delete</button>
+                                <button class="edit-btn">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>Youssef Karray</td>
+                        <td>youssef@gmail.com</td>
+                        <td>98 765 432</td>
+                        <td>
+                            <div class="actions">
+                                <button class="delete-btn">Delete</button>
+                                <button class="edit-btn">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>Amira Jebali</td>
+                        <td>amira@gmail.com</td>
+                        <td>23 987 654</td>
+                        <td>
+                            <div class="actions">
+                                <button class="delete-btn">Delete</button>
+                                <button class="edit-btn">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td>Karim Mhiri</td>
+                        <td>karim@gmail.com</td>
+                        <td>29 456 123</td>
+                        <td>
+                            <div class="actions">
+                                <button class="delete-btn">Delete</button>
+                                <button class="edit-btn">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>6</td>
+                        <td>Rania Chaari</td>
+                        <td>rania@gmail.com</td>
+                        <td>50 678 912</td>
+                        <td>
+                            <div class="actions">
+                                <button class="delete-btn">Delete</button>
+                                <button class="edit-btn">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>7</td>
+                        <td>Mohamed Gharbi</td>
+                        <td>mohamed@gmail.com</td>
+                        <td>22 111 333</td>
+                        <td>
+                            <div class="actions">
+                                <button class="delete-btn">Delete</button>
+                                <button class="edit-btn">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>8</td>
+                        <td>Leila Mansouri</td>
+                        <td>leila@gmail.com</td>
+                        <td>97 654 321</td>
+                        <td>
+                            <div class="actions">
+                                <button class="delete-btn">Delete</button>
+                                <button class="edit-btn">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>9</td>
+                        <td>Hatem Zoghlami</td>
+                        <td>hatem@gmail.com</td>
+                        <td>26 789 654</td>
+                        <td>
+                            <div class="actions">
+                                <button class="delete-btn">Delete</button>
+                                <button class="edit-btn">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>10</td>
+                        <td>Ines Baccar</td>
+                        <td>ines@gmail.com</td>
+                        <td>54 222 888</td>
+                        <td>
+                            <div class="actions">
+                                <button class="delete-btn">Delete</button>
+                                <button class="edit-btn">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+        <!--modal-->
+        <div class="modal" id="modal">
+            <div class="modal-inner">
+                <div class="profile">
+                    <img class="profile-img" src="../pics/client-form.jpg" width="100">
+                    <h3>Edit Client</h3>
+                </div>
+                <div class="inputs">
+                    <div class="field">
+                        <label>Name</label>
+                        <input type="text" placeholder="Name...">
+                    </div>
+
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" placeholder="Email...">
+                    </div>
+
+                    <div class="field">
+                        <label>Phone Number</label>
+                        <input type="number" placeholder="Phone Number...">
+                    </div>
+                </div>
+                <button id="closeModal" class="closeEdit">Save</button>
+            </div>
+        </div>
+    
+
+    <!--Add Client-->
+        <div class="visibility content2 " id="sec2">
+            <div class="AddSection">
+                <div class="profile">
+                    <img class="profile-img" src="../pics/client-form.jpg" width="100">
+                    <h3>Add Client</h3>
+                </div>
+                <div class="inputs">
+                    <div class="field">
+                        <label>Name</label>
+                        <input type="text" placeholder="Name...">
+                    </div>
+
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" placeholder="Email...">
+                    </div>
+
+                    <div class="field">
+                        <label>Phone Number</label>
+                        <input type="number" placeholder="Phone Number...">
+                    </div>
+                </div>
+                <button id="closeModal" class="closeEdit">Add</button>
+            </div>
+
+        </div>
+
+    <!--chatbot-->
+        <div class="visibility chat" id="sec3">
+            <div class="bottom-box">
+                <h2>Hi! How can I help you?</h2>
+                <div class="input-area">
+                    <input type="text" placeholder="Ask anything...">
+                    
+                    <!-- icône envoyer -->
+                    <button class="send-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px">
+                            <path d="M120-160 840-480 120-800v240l480 80-480 80v240Z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+</script>
+
+</html>

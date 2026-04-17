@@ -1,0 +1,442 @@
+/*darkmode*/
+
+/*base colors*/
+:root{
+    --base-color: linear-gradient(135deg, #f1f0f0, #e5e7eb); /*for background color*/
+    --base-variant: #e9e9ec; /*for darkmode button*/
+    --text-color: #111528;
+    --secondary-color: linear-gradient(180deg, #097280, #cbd5f5);
+    --primary-color: #0f101058; /*aside shadow*/
+    --accent-color: #0071ff;
+    --trait-color:rgb(212, 208, 208);
+    --button-color:linear-gradient(135deg, #edfafcef, #ffffff46);
+    --nav-color: #ffffff;
+    --content-color: #ffffff;
+    --th-color:#f0f0f0;
+    --search-color:#f4f4f4;
+    --deletebtn-color:#FFACAD;
+    --editbtn-color:#43C1BF;
+    --editSection-color:#ffffff;
+    --buttonContrentOn-color:#ffffff;
+    --buttonContrentOff-color:rgb(225, 225, 225);
+}
+.darkmode{
+    --base-color: linear-gradient(135deg, #011011, #011011, #000c0d);
+    --base-variant: #0e0e0e;
+    --text-color: #ffffff;
+    --secondary-color: linear-gradient(135deg, #022126, #299cab);
+    --primary-color: #3f434e;
+    --accent-color: #0071ff;
+    --nav-color: #0b2c31;
+    --button-color:linear-gradient(135deg, #0e4c56, #ffffff46);
+    --content-color: #032225;
+    --th-color:#6c948f;
+    --search-color:#98bbbe6e;
+    --deletebtn-color:#ae6061;
+    --editbtn-color:#2f7876;
+    --editSection-color:#1b3c40;
+    --buttonContrentOn-color:#032225;
+    --buttonContrentOff-color:#044247;
+}
+
+/*darkmode buttons*/
+#theme-switch{
+   height: 40px;
+   width: 40px;
+   padding: 0;
+   border-radius: 50%;
+   background-color: var(--base-variant);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: none;
+   cursor: pointer;
+}
+#theme-switch svg   {
+    fill: var(--primary-color);
+}
+#theme-switch svg:last-child   {
+    display: none;
+}
+.darkmode #theme-switch svg:first-child{
+    display: none;
+}
+.darkmode #theme-switch svg:last-child{
+    display: block;
+}
+
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: var(--base-color);
+    
+}
+
+/*aside*/
+aside{
+    position: fixed; 
+    top: 0;          
+    left: 0;         
+    width: 225px;    
+    height: 100%;   
+    background: var(--secondary-color);
+    
+    box-shadow: 3px 0 5px var(--primary-color); 
+    border-top-right-radius: 10%;
+}
+.NextGen{
+    display: flex;            
+    align-items: center;  
+    gap: 10px;                
+    margin-bottom: 30px;
+    color: white;
+}
+.line{
+    display: flex;            
+    align-items: center;  
+    list-style: none;    
+    gap: 10px;                
+    margin-bottom: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    
+    width: 170px;
+    padding-left: 5px;
+}
+.line:hover {
+    background:var(--button-color)
+}
+.line.active {
+    background: var(--button-color)
+}
+.line p{
+    color: var(--text-color);
+}
+
+svg{
+    fill: var(--text-color);
+}
+.line h1{
+    color: white;
+}
+.icons{
+    padding-left: 15px;
+}
+
+/*nav */
+nav{
+    box-shadow: 3px 0 5px var(--primary-color); 
+    background-color: var(--nav-color);
+    margin-left: 200px;
+    margin-top: 0;
+    height: 70px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding-right: 50px;
+}
+.section{
+    margin-top: 0;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.section h2{
+    color: var(--text-color);
+}
+.person{
+    padding-right: 50px;
+    width: 30px;
+    height: 30px;
+}
+
+
+/*client content*/
+.client {
+    margin-left: 285px;
+    margin-right: 60px;
+    margin-top: 40px; 
+    
+    
+}
+.buttons{
+    margin: 0;
+}
+.buttons button{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: none;
+    background-color: var(--buttonContrentOff-color);
+    padding: 10px;
+    font-size: 15px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+.buttons button.white {
+    background-color: var(--buttonContrentOn-color) ;
+}
+.content{
+    background-color: var(--content-color);
+    height: 75vh;
+    display: flex;
+    flex-direction: column;  
+    align-items: center;      
+    padding: 20px;  
+}
+
+
+
+/*search bar*/
+.search-box {
+    position: relative;
+    width: 250px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--search-color);
+    
+}
+input::placeholder {
+    color: var(--text-color);
+}
+
+.search-box .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    pointer-events: none; 
+}
+
+
+/*tableau */
+table {
+    width: 100%;          
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color:var(--th-color);
+}
+td button {
+    display: flex;
+    align-items: center;
+    gap: 5px;          
+    padding: 5px 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 14px;
+
+}
+
+td button.delete-btn {
+    background-color: var(--deletebtn-color);
+    color: var(--text-color)
+}
+td button.edit-btn {
+    background-color: var(--editbtn-color);
+    color: var(--text-color)
+}
+
+.actions {
+    display: flex;      
+    gap: 10px;         
+}
+td{
+    color: var(--text-color);
+}
+.table-container {
+    width: 100%;
+    flex: 1;              /* prend l’espace restant */
+    overflow-y: auto;     /* scroll seulement ici */
+    height: 100%; /* ou flex:1 */
+}
+th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: var(--th-color); /* important sinon transparence */
+}
+
+/*modal*/
+.modal{
+    background-color: #000c0dc4;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+}
+.modal.open{
+    opacity: 1;
+    z-index: 999;
+}
+.modal-inner{
+    background-color:var(--editSection-color);
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px;
+    color: var(--text-color);
+    width: 100%;
+    max-width: 700px;
+}
+.profile-img{
+    border-radius: 50%;
+}
+.inputs label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+.inputs input {
+    display: block;
+    padding: 8px;
+    width: 250px;
+    border-radius: 20px;
+    border: none;
+    background-color: #e5ebeb;
+    margin-bottom: 30px;
+    
+}
+.inputs input::placeholder {
+    color: rgb(97, 96, 96);
+}
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centre horizontalement */
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.profile h3 {
+    margin-top: 10px;
+}
+.inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px;
+    justify-content: center;
+    width: 100%;
+}
+.field {
+    width: 48%; 
+}
+.closeEdit{
+    margin-top: 30px;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--editbtn-color);
+    padding: 10px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+
+/*Add Client*/
+.content2{
+    background-color: var(--content-color);
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+    align-items: center;   
+    padding: 20px;     
+    margin-left: 285px;
+    margin-right: 60px;
+    margin-top: 40px;  
+    height: 75vh;
+    
+}
+.AddSection{
+    text-align: center;
+    color: var(--text-color);
+    width: 100%;
+    max-width: 600px;
+    
+}
+
+
+
+/*chatbot*/
+.chat{
+    margin-left: 285px;
+    margin-right: 60px;
+    margin-top: 60px;
+    display: flex;
+}
+.bottom-box {
+    position: fixed;
+    bottom: 40px;
+    left: 285px; /* même que ton content */
+    right: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input-area {
+    position: relative; /* clé pour placer le bouton */
+}
+.bottom-box input {
+    padding: 10px 40px 10px 10px; /* espace à droite pour le bouton */
+    border-radius: 20px;
+    border-color: #51dfcc;
+    width: 700px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(0, 255, 221, 0.6);
+    border-color: #55dfd8;
+}
+.bottom-box input::placeholder {
+    color: rgb(97, 96, 96);
+}
+.bottom-box input:focus {
+    outline: none;
+    border: 2px solid #3ab5b9; 
+}
+.bottom-box h2{
+    color: var(--text-color);
+    margin-bottom: 60px;
+}
+.send-btn {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: #097280;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.send-btn svg {
+    fill: white;
+}
+
+
+
