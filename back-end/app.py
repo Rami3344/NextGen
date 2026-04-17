@@ -1,10 +1,11 @@
 from flask import Flask
 from db import db
+from flask_cors import CORS
 from routes import register_routes
 
 def create_app(test_config=None):
     app = Flask(__name__)
-    
+    CORS(app, origins=["http://127.0.0.1:5500"])
     if test_config:
         app.config.update(test_config)
     else:
