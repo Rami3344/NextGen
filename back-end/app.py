@@ -2,10 +2,11 @@ from flask import Flask
 from db import db
 from flask_cors import CORS
 from routes import register_routes
+from chatbot import chatbot_bp
 
 def create_app(test_config=None):
     app = Flask(__name__)
-    CORS(app, origins=["http://127.0.0.1:5500"])
+    CORS(app, origins=["http://127.0.0.1:5500", "null"])
     if test_config:
         app.config.update(test_config)
     else:
@@ -16,6 +17,7 @@ def create_app(test_config=None):
     db.init_app(app)
 
     register_routes(app)
+    app.register_blueprint(chatbot_bp, url_prefix="/chatbot")
 
     return app
 

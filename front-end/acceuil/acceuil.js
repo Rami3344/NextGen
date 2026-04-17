@@ -147,3 +147,41 @@ async function getData() {
   });
 }
 getData();
+// Chatbot
+const chatInput = document.querySelector(".chat input");
+const sendBtn = document.querySelector(".send-btn");
+const messagesBox = document.getElementById("messages-box");
+
+sendBtn.addEventListener("click", async () => {
+    const message = chatInput.value.trim();
+    if (!message) return;
+
+    // Show user message
+    const userMsg = document.createElement("div");
+    userMsg.className = "user-msg";
+    userMsg.textContent = message;
+    messagesBox.appendChild(userMsg);
+
+    chatInput.value = "";
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+
+    // Send to backend
+    const res = await fetch("http://127.0.0.1:3001/chatbot/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: message })
+    });
+
+    const data = await res.json();
+
+    // Show bot response
+    const botMsg = document.createElement("div");
+    botMsg.className = "bot-msg";
+    botMsg.textContent = data.response;
+    messagesBox.appendChild(botMsg);
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+});
+
+chatInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") sendBtn.click();
+});
