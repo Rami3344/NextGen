@@ -17,7 +17,7 @@ def create_app(test_config=None):
     db.init_app(app)
 
     register_routes(app)
-    app.register_blueprint(chatbot_bp, url_prefix="/chatbot")
+    #app.register_blueprint(chatbot_bp, url_prefix="/chatbot")
 
     return app
 

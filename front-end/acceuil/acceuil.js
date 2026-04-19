@@ -60,19 +60,6 @@ buttons.forEach((button) => {
   });
 });
 
-//modal
-const openBtns = document.querySelectorAll(".edit-btn");
-const closeBtn = document.getElementById("closeModal");
-const modal = document.getElementById("modal");
-openBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    modal.classList.add("open");
-  });
-});
-closeBtn.addEventListener("click", () => {
-  modal.classList.remove("open");
-});
-
 /*boutons client et add
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
@@ -111,13 +98,15 @@ function showSection(id) {
   document.getElementById(id).style.display = "flex";
 }
 
+let selectedClientId = null;
+
 async function getData() {
   const res = await fetch("http://127.0.0.1:3001/client");
   const data = await res.json();
 
-  console.log(data);
-
   const table = document.getElementById("clientTable");
+  table.innerHTML = "";
+
   data.forEach((c) => {
     const tr = document.createElement("tr");
 
@@ -131,13 +120,30 @@ async function getData() {
     const div = document.createElement("div");
     div.className = "actions";
 
+    // DELETE
     const btn = document.createElement("button");
     btn.className = "delete-btn";
     btn.textContent = "Delete";
+    btn.addEventListener("click", async () => {
+      await fetch(`http://127.0.0.1:3001/client/${c.id}`, {
+        method: "DELETE",
+      });
+      getData();
+    });
 
+    // EDIT
     const edit = document.createElement("button");
     edit.className = "edit-btn";
     edit.textContent = "Edit";
+    edit.addEventListener("click", () => {
+      selectedClientId = c.id;
+
+      document.getElementById("editName").value = c.name;
+      document.getElementById("editEmail").value = c.email;
+      document.getElementById("editPhone").value = c.phone;
+
+      document.getElementById("modal").classList.add("open");
+    });
 
     div.appendChild(btn);
     div.appendChild(edit);
@@ -146,42 +152,105 @@ async function getData() {
     table.appendChild(tr);
   });
 }
+
 getData();
+
+// UPDATE CLIENT
+async function updateClient() {
+  const name = document.getElementById("editName").value;
+  const email = document.getElementById("editEmail").value;
+  const phone = document.getElementById("editPhone").value;
+
+  console.log("Updating ID:", selectedClientId);
+
+  const res = await fetch(`http://127.0.0.1:3001/client/${selectedClientId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, email, phone }),
+  });
+
+  const data = await res.json();
+  console.log("SERVER RESPONSE:", data);
+
+  document.getElementById("modal").classList.remove("open");
+  getData();
+}
+
+// ADD CLIENT
+async function addClient() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+
+  const res = await fetch("http://127.0.0.1:3001/client", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, phone }),
+  });
+
+  if (res.ok) {
+    getData();
+  }
+}
+
+// CLOSE MODAL
+document.getElementById("closeModal").addEventListener("click", () => {
+  document.getElementById("modal").classList.remove("open");
+});
+//Add Client
+async function addClient() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+
+  const res = await fetch("http://127.0.0.1:3001/client", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, phone }),
+  });
+  if (!res.ok) {
+    console.log("error creating user");
+    return;
+  }
+}
+
 // Chatbot
 const chatInput = document.querySelector(".chat input");
 const sendBtn = document.querySelector(".send-btn");
 const messagesBox = document.getElementById("messages-box");
 
 sendBtn.addEventListener("click", async () => {
-    const message = chatInput.value.trim();
-    if (!message) return;
+  const message = chatInput.value.trim();
+  if (!message) return;
 
-    // Show user message
-    const userMsg = document.createElement("div");
-    userMsg.className = "user-msg";
-    userMsg.textContent = message;
-    messagesBox.appendChild(userMsg);
+  // Show user message
+  const userMsg = document.createElement("div");
+  userMsg.className = "user-msg";
+  userMsg.textContent = message;
+  messagesBox.appendChild(userMsg);
 
-    chatInput.value = "";
-    messagesBox.scrollTop = messagesBox.scrollHeight;
+  chatInput.value = "";
+  messagesBox.scrollTop = messagesBox.scrollHeight;
 
-    // Send to backend
-    const res = await fetch("http://127.0.0.1:3001/chatbot/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: message })
-    });
+  // Send to backend
+  const res = await fetch("http://127.0.0.1:3001/chatbot/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: message }),
+  });
 
-    const data = await res.json();
+  const data = await res.json();
 
-    // Show bot response
-    const botMsg = document.createElement("div");
-    botMsg.className = "bot-msg";
-    botMsg.textContent = data.response;
-    messagesBox.appendChild(botMsg);
-    messagesBox.scrollTop = messagesBox.scrollHeight;
+  // Show bot response
+  const botMsg = document.createElement("div");
+  botMsg.className = "bot-msg";
+  botMsg.textContent = data.response;
+  messagesBox.appendChild(botMsg);
+  messagesBox.scrollTop = messagesBox.scrollHeight;
 });
 
 chatInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") sendBtn.click();
+  if (e.key === "Enter") sendBtn.click();
 });
