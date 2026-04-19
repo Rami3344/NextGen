@@ -2,8 +2,11 @@ from flask import request, jsonify
 from . import chatbot_bp
 from groq import Groq
 from db import Client
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-client = Groq(api_key="GROQ_API_KEY")
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def get_customers_context():
     customers = Client.query.all()
