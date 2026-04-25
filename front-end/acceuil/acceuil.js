@@ -107,53 +107,66 @@ async function getData() {
   const table = document.getElementById("clientTable");
   table.innerHTML = "";
 
-  data.forEach((c) => {
-    const tr = document.createElement("tr");
+  const searchValue = document.getElementById("searchInput").value.toLowerCase().trim();
 
-    ["id", "name", "email", "phone"].forEach((key) => {
-      const td = document.createElement("td");
-      td.textContent = c[key];
-      tr.appendChild(td);
-    });
+  data
+    .filter(
+      (c) =>
+        c.id.toString().includes(searchValue) ||
+        c.name.toLowerCase().includes(searchValue) ||
+        c.email.toLowerCase().includes(searchValue) ||
+        c.phone.toLowerCase().includes(searchValue),
+    )
+    .forEach((c) => {
+      const tr = document.createElement("tr");
 
-    const td = document.createElement("td");
-    const div = document.createElement("div");
-    div.className = "actions";
-
-    // DELETE
-    const btn = document.createElement("button");
-    btn.className = "delete-btn";
-    btn.textContent = "Delete";
-    btn.addEventListener("click", async () => {
-      await fetch(`http://127.0.0.1:3001/client/${c.id}`, {
-        method: "DELETE",
+      ["id", "name", "email", "phone"].forEach((key) => {
+        const td = document.createElement("td");
+        td.textContent = c[key];
+        tr.appendChild(td);
       });
-      getData();
+
+      const td = document.createElement("td");
+      const div = document.createElement("div");
+      div.className = "actions";
+
+      // DELETE
+      const btn = document.createElement("button");
+      btn.className = "delete-btn";
+      btn.textContent = "Delete";
+      btn.addEventListener("click", async () => {
+        await fetch(`http://127.0.0.1:3001/client/${c.id}`, {
+          method: "DELETE",
+        });
+        getData();
+      });
+
+      // EDIT
+      const edit = document.createElement("button");
+      edit.className = "edit-btn";
+      edit.textContent = "Edit";
+      edit.addEventListener("click", () => {
+        selectedClientId = c.id;
+
+        document.getElementById("editName").value = c.name;
+        document.getElementById("editEmail").value = c.email;
+        document.getElementById("editPhone").value = c.phone;
+
+        document.getElementById("modal").classList.add("open");
+      });
+
+      div.appendChild(btn);
+      div.appendChild(edit);
+      td.appendChild(div);
+      tr.appendChild(td);
+      table.appendChild(tr);
     });
-
-    // EDIT
-    const edit = document.createElement("button");
-    edit.className = "edit-btn";
-    edit.textContent = "Edit";
-    edit.addEventListener("click", () => {
-      selectedClientId = c.id;
-
-      document.getElementById("editName").value = c.name;
-      document.getElementById("editEmail").value = c.email;
-      document.getElementById("editPhone").value = c.phone;
-
-      document.getElementById("modal").classList.add("open");
-    });
-
-    div.appendChild(btn);
-    div.appendChild(edit);
-    td.appendChild(div);
-    tr.appendChild(td);
-    table.appendChild(tr);
-  });
 }
 
 getData();
+
+//serach
+document.getElementById("searchInput").addEventListener("input", getData);
 
 // UPDATE CLIENT
 async function updateClient() {
@@ -199,22 +212,6 @@ async function addClient() {
 document.getElementById("closeModal").addEventListener("click", () => {
   document.getElementById("modal").classList.remove("open");
 });
-//Add Client
-async function addClient() {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const phone = document.getElementById("phone").value;
-
-  const res = await fetch("http://127.0.0.1:3001/client", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, phone }),
-  });
-  if (!res.ok) {
-    console.log("error creating user");
-    return;
-  }
-}
 
 // Chatbot
 const chatInput = document.querySelector(".chat input");
