@@ -27,13 +27,13 @@ NextGen/
 │   └── venv/                # Python virtual environment
 │
 └── front-end/               # Frontend application
-    ├── index.html           # Main page (login/signup)
-    ├── index.css            # Main styles
-    ├── index.js             # Main scripts
+    ├── index.html           
+    ├── index.css            
+    ├── index.js             
     ├── acceuil/             # Welcome/dashboard page
-    │   ├── acceuil.html
-    │   ├── acceuil.css
-    │   └── acceuil.js
+    │   ├── acceuil.html     # Main page (login/signup)
+    │   ├── acceuil.css      # Main styles
+    │   └── acceuil.js       # Main scripts
     └── pics/                # Static images and assets
 ```
 
